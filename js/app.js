@@ -7,32 +7,7 @@ let shopArray = ['seattle', 'tokyo', 'dubai', 'paris', 'lima']
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
-//constructor (properties)
-function ShopData(city, minCust, maxCust, avgCookieSale){
-  this.city= city;
-  this.minCust = minCust;
-  this.maxCust = maxCust;
-  this.avgCookieSale = avgCookieSale;
-  this.cookiesPerHour = [];
-  this.totalCookies = 0;
-  this.calcCookies();
 
-
-
-  shopAnalytics.push(this);
-}
-// ********** Invoking our function
-let shopAnalytics = [];
-
-function randomCustomers(min,max){
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-// prototype method inherits from constructor ShopData
-ShopData.prototype.calcCookies = function(){
-  for (let i = 0; i < hours.length; i++){
-    this.cookiesPerHour = Math.ceil(randomCustomers(this.maxCust, this.minCust) * this.avgCookieSale);
-    // shopAnalytics.push();
-    this.totalCookies += this.cookiesPerHour[i];
   }
 };
 console.log(shopAnalytics);
