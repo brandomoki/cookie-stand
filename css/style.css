@@ -1,18 +1,17 @@
-section {
+body {
   text-align: center;
-  background-color: aqua;
 }
-thead {
-  flex: content;
-  padding: 10px;
-  padding: black;
-  
+
+div {
+  display:inline-block
 }
-th {
-  padding: px;
+
+#table {
+  display: block;
+  margin-top: 20px;
 }
-td {
-  padding: 15px;
-  border: solid 2px black;
-  background-color: white;
+
+th, td {
+  border: 1px solid black;
+  padding: 5px;
 }
