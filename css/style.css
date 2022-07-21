@@ -1,0 +1,18 @@
+section {
+  text-align: center;
+  background-color: aqua;
+}
+thead {
+  flex: content;
+  padding: 10px;
+  padding: black;
+  
+}
+th {
+  padding: px;
+}
+td {
+  padding: 15px;
+  border: solid 2px black;
+  background-color: white;
+}

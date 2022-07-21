@@ -3,25 +3,39 @@
 let cookieHut = document.getElementById('cookie-Hut');
 let salesTables = document.getElementById('sales-table');
 
-function randomCustomers(min,max){
-  console.log(min, max, Math.floor(Math.random() * (max - min + 1) + min));
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+let shopArray = ['seattle', 'tokyo', 'dubai', 'paris', 'lima']
 
-let shopAnalytics = [];
+let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
+//constructor (properties)
 function ShopData(city, minCust, maxCust, avgCookieSale){
-  this.city = city;
+  this.city= city;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgCookieSale = avgCookieSale;
-  this.hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
   this.cookiesPerHour = [];
   this.totalCookies = 0;
+  this.calcCookies();
+
 
 
   shopAnalytics.push(this);
 }
+// ********** Invoking our function
+let shopAnalytics = [];
+
+function randomCustomers(min,max){
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+// prototype method inherits from constructor ShopData
+ShopData.prototype.calcCookies = function(){
+  for (let i = 0; i < hours.length; i++){
+    this.cookiesPerHour = Math.ceil(randomCustomers(this.maxCust, this.minCust) * this.avgCookieSale);
+    // shopAnalytics.push();
+    this.totalCookies += this.cookiesPerHour[i];
+  }
+};
+console.log(shopAnalytics);
 
 let seattle = new ShopData('Seattle', 23, 65, 6.3);
 let tokyo = new ShopData('Tokyo', 3, 24, 1.2);
@@ -29,48 +43,59 @@ let dubai = new ShopData('Dubai', 11, 38, 3.7);
 let paris = new ShopData('Paris', 20, 38, 2.3);
 let lima = new ShopData('Lima', 2, 16, 4.6);
 
-ShopData.prototype.calcCookies = function(){
-  for (let i = 0; i < this.hours.length; i++){
-    this.cookiesPerHour[i] = Math.ceil(randomCustomers(this.minCust, this.maxCust) * this.avgCookieSale);
-    this.totalCookies += this.cookiesPerHour[i];
-  }
-};
-
-
-
-
 //this made it all work lets goo!;-)
- shopAnalytics[0].calcCookies();
 
 
 
-function tableElem(){
-  let theadElem = document.createElement('thead');
-  salesTables.appendChild(theadElem);
-
+// ****** header row city
+ShopData.prototype.render = function(){
+  let salesTables = document.getElementById('sales-table');
   let th1Elem = document.createElement('th');
-  theadElem.appendChild(th1Elem);
-  // th1Elem.textContent = this.city;
+  salesTables.append(th1Elem);
 
-  for(let i = 0; i < this.hours.length; i++){
-    let td1Elem = document.createElement('td');
-    td1Elem.textContent = this.cookiesPerHour[i];
-    theadElem.appendChild(td1Elem);
+  // let th1Elem = document.createElement('th');
+  // th1Elem.innerText = this.city;
+  // theadElem.appendChild(th1Elem);
+
+
+  for(let i = 0; i < hours.length; i++){
+    let tr1Elem = document.createElement('tr');
+    tr1Elem.textContent = shopAnalytics[i].city;
+    th1Elem.append(tr1Elem);
   }
-}
+  
+};
+console.table(shopAnalytics);
+shopAnalytics[0].render();
+shopAnalytics[1].render();
+shopAnalytics[2].render();
+shopAnalytics[3].render();
+shopAnalytics[4].render();
 
 
-tableElem();
+
+ShopData.prototype.tableBodyRow = function(){
+    let salesBody = document.getElementById('sales-body');
+  let th2Elem = document.createElement('th');
+  salesBody.append(th2Elem);
+
+  for(let i = 0; i < hours.length; i++){
+    let td2Elem = document.createElement('td');
+    td2Elem.textContent = shopAnalytics[i].cookiesPerHour;
+    th2Elem.append(td2Elem);
+  }
+ };
 
 
 
+// shopAnalytics[0].tableBodyRow();
 
 
 //********** Methods */
 //ShopData.prototype.renderShop = function(){
 //   console.log('hey');
  //  let theadElem = document.createElement('thead');
- //  salesTables.appendChild(theadElem);
+ //  salesBody.appendChild(theadElem);
 // };
 
 //   let th1Elem = document.createElement('th');
