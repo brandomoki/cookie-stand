@@ -106,6 +106,51 @@ shopAnalytics[2].tableBodyRow();
 shopAnalytics[3].tableBodyRow();
 shopAnalytics[4].tableBodyRow();
 
+//******************* 1. grab the element **********************/
+
+let myForm = document.getElementById('my-form');
+
+
+//******************* 3. define callback function **********************/
+
+function handleSubmit(event){
+  event.preventDefault();
+
+  let nameCity = event.target.enterCity.value;
+  
+  //**************** parseInt turn string to number the plus sign +  **************/
+  let minCustomer = +event.target.enterMin.value;
+  let maxCustomer = +event.target.enterMax.value;
+  let avgCustomer = +event.target.enterAverage.value;
+
+  let newShop = new ShopData(city, minCust, maxCust, avgCookieSale);
+
+  newShop.tableBodyRow();
+  shopAnalytics[0].tableBodyRow();
+  shopAnalytics[1].tableBodyRow();
+  shopAnalytics[2].tableBodyRow();
+  shopAnalytics[3].tableBodyRow();
+  shopAnalytics[4].tableBodyRow();
+}
+
+//******************* 2. attach eventListener **********************/
+
+myForm.addEventListener('submit', handleSubmit);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
