@@ -73,7 +73,7 @@ function renderHeader(){
 }
 
 
-
+renderHeader();
 
 
 ShopData.prototype.tableBodyRow = function(){
@@ -97,7 +97,7 @@ ShopData.prototype.tableBodyRow = function(){
 
 };
 
-renderHeader();
+
 
 console.table(shopAnalytics);
 shopAnalytics[0].tableBodyRow();
@@ -108,29 +108,42 @@ shopAnalytics[4].tableBodyRow();
 
 //******************* 1. grab the element **********************/
 
-let myForm = document.getElementById('my-form');
 
+let myForm = document.getElementById('myForm');
 
 //******************* 3. define callback function **********************/
+//**************** parseInt turn string to number the plus sign +  **************
+
 
 function handleSubmit(event){
   event.preventDefault();
 
   let nameCity = event.target.enterCity.value;
-  
-  //**************** parseInt turn string to number the plus sign +  **************/
+  console.log(nameCity);
   let minCustomer = +event.target.enterMin.value;
+  console.log(minCustomer);
   let maxCustomer = +event.target.enterMax.value;
+  console.log(maxCustomer);
   let avgCustomer = +event.target.enterAverage.value;
+  console.log(avgCustomer);
+
+
+
+
+
 
   let newShop = new ShopData(city, minCust, maxCust, avgCookieSale);
+  console.log(newShop);
 
-  newShop.tableBodyRow();
   shopAnalytics[0].tableBodyRow();
   shopAnalytics[1].tableBodyRow();
   shopAnalytics[2].tableBodyRow();
   shopAnalytics[3].tableBodyRow();
   shopAnalytics[4].tableBodyRow();
+
+  newShop.tableBodyRow();
+  myForm.reset();
+
 }
 
 //******************* 2. attach eventListener **********************/
