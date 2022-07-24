@@ -1,3 +1,19 @@
+body {
+  background-color: linear-gradient( aqua blue)
+}
+
+fieldset {
+  display: ;
+  flex-direction: column;
+}
+
+
+
+
+
+
+
+
 section {
   flex: content;
   text-align: center;
