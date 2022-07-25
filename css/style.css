@@ -1,35 +1,35 @@
 body {
-  background-color: linear-gradient( aqua blue)
+  background-color: rgb(157, 199, 200);
+  
 }
-
-fieldset {
-  display: ;
-  flex-direction: column;
+#myForm {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
 }
-
-
-
-
-
-
-
-
-section {
-  flex: content;
-  text-align: center;
-  background-color: aqua;
+#myForm fieldset {
+ text-align: center;
+}
+table {
+  display: flexbox;
+  justify-content: center;
+  width: 65%;
+  margin-left: 333px;
+  margin-top: 100px;
 }
 thead {
+  
   flex: content;
   padding: 10px;
   padding: black;
-  
+
 }
 th {
+  
   padding: px;
 }
 td {
   padding: 15px;
   border: solid 2px black;
-  background-color: white;
+  background-color: rgb(255, 226, 254);
 }

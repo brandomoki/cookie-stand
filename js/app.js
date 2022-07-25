@@ -1,11 +1,14 @@
 'use strict';
-// let salesTables = document.getElementById('sales-table');
-// let cookieHut = document.getElementById('cookie-Hut');
 
+const salesTables = document.getElementById('sales-table');
+
+let myForm = document.getElementById('myForm');
 
 // let shopArray = ['seattle', 'tokyo', 'dubai', 'paris', 'lima']
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+
+let shopAnalytics = [];
 
 //***************constructor (properties)*******************************
 function ShopData(city, minCust, maxCust, avgCookieSale){
@@ -22,7 +25,7 @@ function ShopData(city, minCust, maxCust, avgCookieSale){
   shopAnalytics.push(this);
 }
 
-let shopAnalytics = [];
+
 // ********** Invoking our function
 
 
@@ -53,7 +56,7 @@ new ShopData('Lima', 2, 16, 4.6);
 // ****** header row city****************************************************
 
 function renderHeader(){
-  let salesTables = document.getElementById('sales-table');
+
   let th1Elem = document.createElement('thead');
   // let th2Elem = document.createElement('tbody');
   salesTables.appendChild(th1Elem);
@@ -77,7 +80,7 @@ renderHeader();
 
 
 ShopData.prototype.tableBodyRow = function(){
-  let salesTables = document.getElementById('sales-table');
+
   let th2Elem = document.createElement('tbody');
   salesTables.appendChild(th2Elem);
 
@@ -99,47 +102,64 @@ ShopData.prototype.tableBodyRow = function(){
 
 
 
-console.table(shopAnalytics);
-shopAnalytics[0].tableBodyRow();
-shopAnalytics[1].tableBodyRow();
-shopAnalytics[2].tableBodyRow();
-shopAnalytics[3].tableBodyRow();
-shopAnalytics[4].tableBodyRow();
+// console.table(shopAnalytics);
+// shopAnalytics[0].tableBodyRow();
+// shopAnalytics[1].tableBodyRow();
+// shopAnalytics[2].tableBodyRow();
+// shopAnalytics[3].tableBodyRow();
+// shopAnalytics[4].tableBodyRow();
+
 
 //******************* 1. grab the element **********************/
 
-
-let myForm = document.getElementById('myForm');
 
 //******************* 3. define callback function **********************/
 //**************** parseInt turn string to number the plus sign +  **************
 
 
+
+
+
+function renderShops(){
+  for(let i = 0; i < shopAnalytics.length; i++){
+    let inputShops = shopAnalytics[i];
+    inputShops.tableBodyRow();
+  }
+}
+
+renderShops();
+
+
+
 function handleSubmit(event){
   event.preventDefault();
 
+
   let nameCity = event.target.enterCity.value;
-  console.log(nameCity);
+  // console.log(nameCity);
   let minCustomer = +event.target.enterMin.value;
-  console.log(minCustomer);
+  // console.log(minCustomer);
   let maxCustomer = +event.target.enterMax.value;
-  console.log(maxCustomer);
+  // console.log(maxCustomer);
   let avgCustomer = +event.target.enterAverage.value;
-  console.log(avgCustomer);
-
-
-
-
-
+  // console.log(avgCustomer);
 
   let newShop = new ShopData(city, minCust, maxCust, avgCookieSale);
-  console.log(newShop);
 
-  shopAnalytics[0].tableBodyRow();
-  shopAnalytics[1].tableBodyRow();
-  shopAnalytics[2].tableBodyRow();
-  shopAnalytics[3].tableBodyRow();
-  shopAnalytics[4].tableBodyRow();
+
+
+
+
+  // shopAnalytics[0].tableBodyRow();
+  // shopAnalytics[1].tableBodyRow();
+  // shopAnalytics[2].tableBodyRow();
+  // shopAnalytics[3].tableBodyRow();
+  // shopAnalytics[4].tableBodyRow();
+
+
+  // console.log(newShop);
+
+
 
   newShop.tableBodyRow();
   myForm.reset();
@@ -148,13 +168,10 @@ function handleSubmit(event){
 
 //******************* 2. attach eventListener **********************/
 
+
+
+
 myForm.addEventListener('submit', handleSubmit);
-
-
-
-
-
-
 
 
 
