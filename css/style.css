@@ -25,8 +25,10 @@ thead {
 
 }
 th {
+  padding: 15px;
+  border: solid 2px black;
+  background-color: rgb(255, 226, 254);
   
-  padding: px;
 }
 td {
   padding: 15px;

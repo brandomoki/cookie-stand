@@ -8,6 +8,7 @@ let myForm = document.getElementById('myForm');
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
+let shopCookieAnalytics= [];
 let shopAnalytics = [];
 
 //***************constructor (properties)*******************************
@@ -41,6 +42,12 @@ ShopData.prototype.calcCookies = function(){
   }
 };
 
+ShopData.prototype.totalCookieSum = function() {
+  for (let i = 0; i < this.cookiesPerHour.length; i++){
+    this.totalCookies += this.cookiesPerHour[i];
+  }
+  shopCookieAnalytics.push(this.totalCookies);
+};
 
 new ShopData('Seattle', 23, 65, 6.3);
 new ShopData('Tokyo', 3, 24, 1.2);
@@ -99,12 +106,48 @@ ShopData.prototype.tableBodyRow = function(){
   }
 
 };
+//************************************************************************ */
+function renderFooter(){
+
+  let tableFootElem = document.createElement('tfoot');
+
+  salesTables.appendChild(tableFooter);
+
+
+  let trFootElem = document.createElement('tr');
+  tableFootElem.appendChild(trFootElem);
+
+  let footerHead = document.createElement('th');
+  footerHead.textContent = 'Total';
+  trFootElem.appendChild(footerHead);
+
+  for(let i = 0; i < hours.length; i++){
+    let totalCookies = 0;
+    for (let j = 0; j < shopAnalytics.length; j++){
+      totalCookies += shopAnalytics[j].cookiesPerHour[i];
+    }
+
+    let footCell = document.createElement('th');
+    footCell.textContent = totalCookies;
+    trFootElem.appendChild(footCell);
+
+  }
+  let footerTotal = 0;
+  for (let i = 0; i < shopAnalytics.length; i++){
+    footerHead += shopAnalytics[i].totalCookies;
+  }
+  let footerCookieTotal = document.createElement('th');
+  footerCookieTotal.textContent = footerTotal;
+  trFootElem.appendChild(footerCookieTotal);
+}
+
 
 
 
 // console.table(shopAnalytics);
 // shopAnalytics[0].tableBodyRow();
 // shopAnalytics[1].tableBodyRow();
+
 // shopAnalytics[2].tableBodyRow();
 // shopAnalytics[3].tableBodyRow();
 // shopAnalytics[4].tableBodyRow();
@@ -124,6 +167,7 @@ function renderShops(){
   for(let i = 0; i < shopAnalytics.length; i++){
     let inputShops = shopAnalytics[i];
     inputShops.tableBodyRow();
+
   }
 }
 
