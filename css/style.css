@@ -9,6 +9,8 @@ body {
 }
 #myForm fieldset {
  text-align: center;
+ font-size: larger;
+ font-weight: bold;
 }
 table {
   display: flexbox;
