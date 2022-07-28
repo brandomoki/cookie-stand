@@ -8,7 +8,7 @@ let myForm = document.getElementById('myForm');
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
-let shopCookieAnalytics= [];
+let shopCookieAnalytics = [];
 let shopAnalytics = [];
 
 //***************constructor (properties)*******************************
@@ -84,7 +84,7 @@ function renderHeader(){
 
 
 renderHeader();
-
+console.log(this.totalCookies);
 
 ShopData.prototype.tableBodyRow = function(){
 
@@ -111,7 +111,8 @@ function renderFooter(){
 
   let tableFootElem = document.createElement('tfoot');
 
-  salesTables.appendChild(tableFooter);
+  //************************************   tableFoot was spelled tableFooter, this fixed total table */
+  salesTables.appendChild(tableFootElem);
 
 
   let trFootElem = document.createElement('tr');
@@ -143,22 +144,7 @@ function renderFooter(){
 
 
 
-
-// console.table(shopAnalytics);
-// shopAnalytics[0].tableBodyRow();
-// shopAnalytics[1].tableBodyRow();
-
-// shopAnalytics[2].tableBodyRow();
-// shopAnalytics[3].tableBodyRow();
-// shopAnalytics[4].tableBodyRow();
-
-
-//******************* 1. grab the element **********************/
-
-
-//******************* 3. define callback function **********************/
-//**************** parseInt turn string to number the plus sign +  **************
-
+renderFooter();
 
 
 
@@ -188,20 +174,12 @@ function handleSubmit(event){
   let avgCustomer = +event.target.enterAverage.value;
   // console.log(avgCustomer);
 
-  let newShop = new ShopData(city, minCust, maxCust, avgCookieSale);
+
+  //****************************************  Fixed undefined here allowed user input to show up*/
+  let newShop = new ShopData(nameCity, minCustomer, maxCustomer, avgCustomer);
 
 
 
-
-
-  // shopAnalytics[0].tableBodyRow();
-  // shopAnalytics[1].tableBodyRow();
-  // shopAnalytics[2].tableBodyRow();
-  // shopAnalytics[3].tableBodyRow();
-  // shopAnalytics[4].tableBodyRow();
-
-
-  // console.log(newShop);
 
 
 
@@ -220,50 +198,3 @@ myForm.addEventListener('submit', handleSubmit);
 
 
 
-
-
-
-
-
-
-
-
-//********** Methods */
-//ShopData.prototype.renderShop = function(){
-//   console.log('hey');
-//  let theadElem = document.createElement('thead');
-//  salesBody.appendChild(theadElem);
-// };
-
-//   let th1Elem = document.createElement('th');
-//   th1Elem.textContent = this.city;
-//   theadElem.appendChild(th1Elem);
-// // adding hours
-
-
-
-// ShopData.prototype.renderBody = function(){
-//   let tbodyElem = document.createElement('tbody');
-//   cookieHut.appendChild(tbodyElem);
-
-//   let th2Elem = document.createElement('th');
-//   tbodyElem.appendChild(th2Elem);
-// }
-
-
-// function renderShops(){
-//   for(let i = 0; i < hours.length; i++){
-//     let shopAnalytics = shopAnalytics[i].tableBodyRow;
-
-//   }
-// }
-
-
-// }
-
-// shopAnalytics.renderShop();
-// for(let i = 0; i < hours.length; i++){
-//   let td2Elem = document.createElement('td');
-//   td2Elem.textContent = shopAnalytics[i].cookiesPerHour;
-//   salesTables.append(td2Elem);
-//
